@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WORLD CONNECT</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header>
+  <h1>🌍 WORLD CONNECT</h1>
+  <p>One World. One Connection.</p>
+</header>
+
+<nav>
+  <button onclick="showPage('Home')">🏠 Home</button>
+  <button onclick="showPage('Explore')">🌎 Explore</button>
+  <button onclick="showPage('Messages')">💬 Messages</button>
+  <button onclick="showPage('Notifications')">🔔 Notifications</button>
+  <button onclick="showPage('Profile')">👤 Profile</button>
+</nav>
+
+<main>
+  <section class="composer">
+    <h2>What's happening worldwide?</h2>
+    <textarea id="postText" placeholder="Share something with the world..."></textarea>
+    <button onclick="addPost()">POST NOW</button>
+  </section>
+
+  <h2 id="pageTitle">🌍 Global Feed</h2>
+  <div id="posts">
+    <article class="post">
+      <h3>🌎 WORLD CONNECT</h3>
+      <p>Welcome to WORLD CONNECT! Connect with people around the world.</p>
+      <button onclick="likePost(this)">❤️ Like</button>
+    </article>
+    <article class="post">
+      <h3>🇮🇩 Indonesia</h3>
+      <p>Hello everyone! Greetings from Indonesia!</p>
+      <button onclick="likePost(this)">❤️ Like</button>
+    </article>
+  </div>
+</main>
+
+<footer>WORLD CONNECT © 2026</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>
