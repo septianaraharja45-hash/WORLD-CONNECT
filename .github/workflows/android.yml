@@ -1,56 +1,55 @@
-name: Build WORLD CONNECT APK
+:name: Build WORLD CONNECT APK
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+workflow_dispatch:
+push:
+branches:
+- main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+build:
+runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout project
-        uses: actions/checkout@v4
+steps:
+  - name: Checkout project
+    uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
+  - name: Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: 22
 
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 21
+  - name: Setup Java
+    uses: actions/setup-java@v4
+    with:
+      distribution: temurin
+      java-version: 21
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-      - name: Install Android SDK packages
-        run: sdmanager "platforms;android-36" "build-tools;36.0
-              - name: Install Android SDK packages
-        run: |
-          yes | sdkmanager --licenses
-          sdkmanager "platforms;android-36" "build-tools;36.0.0"
-  .0"
-      - name: Install dependencies
-        run: npm ci
+  - name: Setup Android SDK
+    uses: android-actions/setup-android@v3
 
-      - name: Build website
-        run: npm run build
+  - name: Install Android SDK packages
+    run: |
+      yes | sdkmanager --licenses
+      sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
-      - name: Sync Capacitor
-        run: npx cap sync android
+  - name: Install dependencies
+    run: npm ci
 
-      - name: Build APK
-        run: |
-          cd android
-          chmod +x gradlew
-          ./gradlew assembleDebug
+  - name: Build website
+    run: npm run build
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: WORLD-CONNECT-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+  - name: Sync Capacitor
+    run: npx cap sync android
+
+  - name: Build APK
+    run: |
+      cd android
+      chmod +x gradlew
+      ./gradlew assembleDebug
+
+  - name: Upload APK
+    uses: actions/upload-artifact@v4
+    with:
+      name: WORLD-CONNECT-APK
+      path: android/app/build/outputs/apk/debug/app-debug.apk
