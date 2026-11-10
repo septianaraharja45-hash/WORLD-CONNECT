@@ -1,4 +1,4 @@
-:name: Build WORLD CONNECT APK
+name: Build WORLD CONNECT APK
 
 on:
 workflow_dispatch:
@@ -9,10 +9,9 @@ branches:
 jobs:
 build:
 runs-on: ubuntu-latest
-
 steps:
-  - name: Checkout project
-    uses: actions/checkout@v4
+- name: Checkout project
+uses: actions/checkout@v4
 
   - name: Setup Node.js
     uses: actions/setup-node@v4
